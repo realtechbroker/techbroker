@@ -1,7 +1,6 @@
 baseURL = "https://techbroker.ca/"
 languageCode = "fr-ca"
 title = "Techbroker — Courtier en technologies d'affaires"
-theme = ""
 
 [params]
   description = "Techbroker est un courtier indépendant en technologies d'affaires pour PME québécoises. Accès à 90+ fournisseurs. Conseil gratuit, agnostique et expert en IA."
@@ -18,4 +17,7 @@ theme = ""
 
 [permalinks]
   blog = "/blog/:contentbasename/"
-theme = ""
+
+[module]
+  [module.hugoVersion]
+    extended = true
