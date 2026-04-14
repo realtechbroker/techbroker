@@ -1316,7 +1316,7 @@ footer {
     <h1>
       <span class="line">Le bon outil.</span>
       <span class="line">Le bon prix.</span>
-      <span class="line">Zéro <em>bullshit.</em></span>
+      <span class="line">Zéro <em>détour.</em></span>
     </h1>
 
     <p class="hero-tagline">
@@ -1524,44 +1524,17 @@ footer {
   <div class="section-label">Blogue</div>
   <h2 class="section-title reveal">Ressources et insights.</h2>
   <p class="section-subtitle reveal">Des articles concrets pour aider les PME à prendre de meilleures décisions technologiques. Pas de fluff.</p>
-
   <div class="blog-grid">
-    <div class="blog-card reveal">
-      <span class="tag">Guide</span>
-      <h3>PBX vs Cloud en 2026 : Le guide honnête pour PME</h3>
-      <p>Tout ce que votre fournisseur actuel ne vous dit pas sur la migration vers le cloud. Coûts réels, pièges et timeline.</p>
-      <span class="priority">Priorité #1</span>
-    </div>
-    <div class="blog-card reveal">
-      <span class="tag">Comparatif</span>
-      <h3>Teams Phone vs Zoom Phone vs GoTo : Le vrai comparatif</h3>
-      <p>Un comparatif objectif par quelqu'un qui n'a rien à vous vendre. Forces, faiblesses, et pour qui chaque solution fait du sens.</p>
-      <span class="priority">Priorité #2</span>
-    </div>
-    <div class="blog-card reveal">
-      <span class="tag">IA</span>
-      <h3>Comment l'IA change la téléphonie d'affaires (concrètement)</h3>
-      <p>Transcription, coaching, analytics — pas du buzzword mais des cas d'usage réels pour des équipes de 20-200.</p>
-      <span class="priority">Priorité #3</span>
-    </div>
-    <div class="full-row">
-      <div class="blog-card reveal">
-        <span class="tag">Prix</span>
-        <h3>Combien coûte un système téléphonique d'entreprise au Québec en 2026</h3>
-        <p>La requête #1 des PME sur Google. Fourchettes de prix réelles, ce qui est inclus, et comment ne pas se faire avoir.</p>
-        <span class="priority">Priorité #4</span>
-      </div>
-      <div class="blog-card reveal">
-        <span class="tag">Migration</span>
-        <h3>Quitter Bell Business : Guide de migration sans douleur</h3>
-        <p>Pour les clients Bell frustrés. Étapes concrètes, pièges à éviter, et à quoi s'attendre côté timeline et coûts.</p>
-        <span class="priority">Priorité #5</span>
-      </div>
-    </div>
+    {{ range first 6 (where .Site.RegularPages "Section" "blog") }}
+    <a href="{{ .Permalink }}" class="blog-card reveal" style="text-decoration:none;color:inherit;">
+      {{ with .Params.tag }}<span class="tag">{{ . }}</span>{{ end }}
+      <h3>{{ .Title }}</h3>
+      <p>{{ .Description }}</p>
+    </a>
+    {{ end }}
   </div>
-</section>
   <div style="text-align:center;margin-top:2.5rem;" class="reveal"><a href="/blog/" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 1.8rem;border:1px solid var(--border-hover);border-radius:6px;color:var(--text-secondary);text-decoration:none;font-size:0.9rem;transition:all 0.3s;">Voir tous les articles →</a></div>
-
+</section>
 <!-- ── CTA / QUALIFICATION FORM ── -->
 <section class="cta-section" id="contact">
   <div class="section-label" style="justify-content:center;">Commencer</div>
