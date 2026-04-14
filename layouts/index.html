@@ -1548,26 +1548,31 @@ footer {
 
   <div class="cta-or reveal">ou laissez-nous vos coordonnées</div>
 
-  <div class="qual-form reveal" id="qualForm">
+  <form class="qual-form reveal" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="6cb102aa-6145-43d4-9a2b-877ed8197223">
+    <input type="hidden" name="subject" value="Nouvelle demande - Techbroker.ca">
+    <input type="hidden" name="from_name" value="Techbroker">
+    <input type="hidden" name="redirect" value="https://techbroker.ca/#merci">
+    <input type="checkbox" name="botcheck" style="display:none;">
     <div class="form-row">
       <div class="form-field">
         <label for="fname">Nom complet</label>
-        <input type="text" id="fname" placeholder="Jean Tremblay" required>
+        <input type="text" name="name" id="fname" placeholder="Jean Tremblay" required>
       </div>
       <div class="form-field">
         <label for="femail">Courriel professionnel</label>
-        <input type="email" id="femail" placeholder="jean@entreprise.ca" required>
+        <input type="email" name="email" id="femail" placeholder="jean@entreprise.ca" required>
       </div>
     </div>
     <div class="form-row">
       <div class="form-field">
-        <label for="fcompany">Nom de l'entreprise</label>
-        <input type="text" id="fcompany" placeholder="Votre entreprise inc.">
+        <label for="fcompany">Nom de l entreprise</label>
+        <input type="text" name="company" id="fcompany" placeholder="Votre entreprise inc.">
       </div>
       <div class="form-field">
-        <label for="fsize">Nombre d'employés</label>
-        <select id="fsize">
-          <option value="" disabled selected>Sélectionner</option>
+        <label for="fsize">Nombre d employes</label>
+        <select name="employees" id="fsize">
+          <option value="" disabled selected>Selectionner</option>
           <option value="1-10">1-10</option>
           <option value="11-30">11-30</option>
           <option value="31-50">31-50</option>
@@ -1577,28 +1582,21 @@ footer {
       </div>
     </div>
     <div class="form-field full">
-      <label for="fmotiv">Qu'est-ce qui vous motive à explorer?</label>
-      <select id="fmotiv">
-        <option value="" disabled selected>Sélectionner</option>
-        <option value="facture">Facture trop élevée</option>
-        <option value="desuet">Système désuet / problèmes fréquents</option>
-        <option value="hybride">Passage au télétravail / hybride</option>
-        <option value="croissance">Croissance / nouveau bureau</option>
-        <option value="contrat">Contrat qui arrive à échéance</option>
-        <option value="curieux">Juste curieux</option>
+      <label for="fmotiv">Qu est-ce qui vous motive?</label>
+      <select name="motivation" id="fmotiv">
+        <option value="" disabled selected>Selectionner</option>
+        <option value="Facture trop elevee">Facture trop elevee</option>
+        <option value="Systeme desuet">Systeme desuet / problemes frequents</option>
+        <option value="Teletravail hybride">Passage au teletravail / hybride</option>
+        <option value="Croissance">Croissance / nouveau bureau</option>
+        <option value="Fin de contrat">Contrat qui arrive a echeance</option>
+        <option value="Curieux">Juste curieux</option>
       </select>
     </div>
-    <button class="btn-primary" onclick="submitForm()">
-      Planifier ma consultation gratuite
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <button type="submit" class="btn-primary">
+      Planifier ma consultation gratuite →
     </button>
-  </div>
-
-  <div class="form-success reveal" id="formSuccess">
-    <div class="check">✓</div>
-    <h3>Merci!</h3>
-    <p>On vous revient dans les 24 heures pour planifier votre consultation gratuite.</p>
-  </div>
+  </form>
 </section>
 
 <!-- ── FOOTER ── -->
@@ -1638,18 +1636,6 @@ function closeMobileMenu() {
   document.querySelector('.mobile-menu').classList.remove('open');
 }
 
-function submitForm() {
-  const name = document.getElementById('fname').value;
-  const email = document.getElementById('femail').value;
-  if (!name || !email) {
-    document.getElementById('fname').style.borderColor = name ? 'var(--border-hover)' : '#ff4444';
-    document.getElementById('femail').style.borderColor = email ? 'var(--border-hover)' : '#ff4444';
-    return;
-  }
-  // TODO: Connect to HubSpot, Formspree, or Cal.com
-  document.getElementById('qualForm').style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'block';
-}
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
