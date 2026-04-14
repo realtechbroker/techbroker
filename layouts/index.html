@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Techbroker — Courtier en technologies d'affaires | PME Québec</title>
+<meta name="description" content="Techbroker est un courtier indépendant en technologies d'affaires pour PME québécoises. Accès à 90+ fournisseurs. Conseil gratuit, agnostique et expert en IA. Montréal.">
+<meta name="keywords" content="courtier technologie, PME Québec, téléphonie cloud, UCaaS, CCaaS, Microsoft Teams Phone, technologies d'affaires, Montréal, système téléphonique entreprise">
+<meta property="og:title" content="Techbroker — Courtier en technologies d'affaires pour PME québécoises">
+<meta property="og:description" content="On ne vend rien. On trouve ce qui marche. Accès à 90+ fournisseurs tech via le plus grand distributeur en Amérique du Nord. Consultation gratuite.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://techbroker.ca">
+<meta property="og:locale" content="fr_CA">
+<meta property="og:image" content="https://techbroker.ca/og-image.jpg">
+<link rel="canonical" href="https://techbroker.ca">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["ProfessionalService", "LocalBusiness"],
+  "name": "Techbroker",
+  "description": "Courtier indépendant en technologies d'affaires pour PME québécoises. Accès à 90+ fournisseurs via AVANT Communications.",
+  "url": "https://techbroker.ca",
+  "telephone": "+1-514-945-4465",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Montréal",
+    "addressRegion": "QC",
+    "addressCountry": "CA"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Guillaume",
+    "jobTitle": "Fondateur"
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "Québec, Canada"
+  },
+  "priceRange": "Gratuit pour le client"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-primary: #0a0b0f;
+  --bg-secondary: #111318;
+  --bg-card: #161820;
+  --bg-card-hover: #1c1e28;
+  --text-primary: #e8e6e1;
+  --text-secondary: #8a8994;
+  --text-muted: #5c5b66;
+  --accent: #00e5a0;
+  --accent-dim: #00e5a020;
+  --accent-mid: #00e5a060;
+  --accent-warm: #f0c040;
+  --accent-blue: #4d9fff;
+  --accent-orange: #ff8a50;
+  --border: #ffffff0a;
+  --border-hover: #ffffff15;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 0.8rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to bottom, var(--bg-primary) 70%, transparent);
+  animation: fadeDown 1s ease-out;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--accent);
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-mark::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  opacity: 0.08;
+}
+
+.logo-text {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.logo-text span { color: var(--accent); }
+
+.nav-phone {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-phone:hover { color: var(--text-primary); }
+
+.nav-phone svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.8rem;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--text-primary); }
+
+.nav-cta {
+  padding: 0.5rem 1.2rem !important;
+  background: var(--accent) !important;
+  color: var(--bg-primary) !important;
+  border-radius: 6px;
+  font-weight: 600 !important;
+  font-size: 0.78rem !important;
+  transition: all 0.3s !important;
+}
+
+.nav-cta:hover {
+  box-shadow: 0 0 30px var(--accent-dim), 0 0 60px var(--accent-dim);
+  transform: translateY(-1px);
+}
+
+/* ── MOBILE ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px;
+  z-index: 200;
+}
+
+.hamburger span {
+  width: 22px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg-primary);
+  z-index: 150;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.mobile-menu.open { display: flex; }
+
+.mobile-menu a {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.mobile-menu a:hover { color: var(--text-primary); }
+
+.mobile-menu .mobile-cta {
+  padding: 0.8rem 2rem;
+  background: var(--accent);
+  color: var(--bg-primary);
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.mobile-menu .mobile-phone {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+
+.floating-cta {
+  display: none;
+  position: fixed;
+  bottom: 1.25rem;
+  left: 1rem;
+  right: 1rem;
+  z-index: 90;
+  padding: 0.9rem;
+  background: var(--accent);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 4px 30px rgba(0, 229, 160, 0.3);
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 3rem 4rem;
+  z-index: 1;
+}
+
+.hero-signal-canvas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 55%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.signal-line {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-mid), transparent);
+  animation: signalSweep 4s ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes signalSweep {
+  0% { opacity: 0; transform: scaleX(0); transform-origin: left; }
+  20% { opacity: 1; }
+  50% { transform: scaleX(1); transform-origin: left; }
+  51% { transform-origin: right; }
+  80% { opacity: 1; }
+  100% { opacity: 0; transform: scaleX(0); transform-origin: right; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 750px;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out 0.3s forwards;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 8px var(--accent);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 2rem;
+}
+
+.hero h1 .line {
+  display: block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: revealLine 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero h1 .line:nth-child(1) { animation-delay: 0.5s; }
+.hero h1 .line:nth-child(2) { animation-delay: 0.7s; }
+.hero h1 .line:nth-child(3) { animation-delay: 0.9s; }
+
+@keyframes revealLine { to { opacity: 1; transform: translateY(0); } }
+
+.hero h1 em { font-style: italic; color: var(--accent); }
+
+.hero-tagline {
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 540px;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out 1.2s forwards;
+}
+
+.hero-tagline strong { color: var(--text-primary); font-weight: 500; }
+
+@keyframes fadeIn { to { opacity: 1; } }
+
+.hero-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--accent);
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--accent-mid);
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: fadeSlideIn 0.8s ease-out 1.5s forwards;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out 1.8s forwards;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 2rem;
+  background: var(--accent);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 4px 30px var(--accent-dim), 0 0 80px var(--accent-dim);
+  transform: translateY(-2px);
+}
+
+.btn-primary svg { transition: transform 0.3s; }
+.btn-primary:hover svg { transform: translateX(3px); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.8rem;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-hover);
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+  background: var(--bg-card);
+}
+
+/* ── TRUST BAR ── */
+.trust-bar {
+  position: relative;
+  z-index: 1;
+  padding: 2.5rem 3rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.trust-bar .avant-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex-shrink: 0;
+  padding-right: 2rem;
+  border-right: 1px solid var(--border);
+}
+
+.trust-bar .avant-stat .number {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.trust-bar .avant-stat .desc {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  max-width: 200px;
+  line-height: 1.5;
+}
+
+.trust-logos {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.trust-logos .incluant {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.trust-logos .vendor {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  transition: color 0.3s;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.trust-logos .vendor:hover { color: var(--text-primary); }
+
+/* ── SECTIONS ── */
+section {
+  position: relative;
+  z-index: 1;
+  padding: 6rem 3rem;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-label::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 3.5rem;
+}
+
+/* ── VALUE CARDS ── */
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.value-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.value-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.value-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+}
+
+.value-card:hover::before { opacity: 1; }
+
+.value-card .icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.value-card:nth-child(1) .icon { background: #00e5a015; color: var(--accent); }
+.value-card:nth-child(2) .icon { background: #4d9fff15; color: var(--accent-blue); }
+.value-card:nth-child(3) .icon { background: #f0c04015; color: var(--accent-warm); }
+
+.value-card h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.75rem; }
+.value-card p { font-size: 0.9rem; font-weight: 300; color: var(--text-secondary); line-height: 1.65; }
+
+/* ── PROCESS ── */
+.process-section {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-mid), var(--accent-mid), transparent);
+}
+
+.process-step { text-align: center; padding: 0 1.5rem; position: relative; }
+
+.step-number {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-mid);
+  background: var(--bg-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.process-step h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; }
+.process-step p { font-size: 0.85rem; font-weight: 300; color: var(--text-secondary); line-height: 1.6; }
+
+/* ── SOLUTIONS (problem-oriented) ── */
+.solutions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.solution-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all 0.4s;
+}
+
+.solution-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+}
+
+.solution-card.featured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+  border-color: var(--accent-dim);
+}
+
+.solution-card.featured:hover { border-color: var(--accent-mid); }
+
+.solution-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.badge-popular { background: var(--accent-dim); color: var(--accent); }
+.badge-service { background: #4d9fff15; color: var(--accent-blue); }
+.badge-optim { background: #ff8a5015; color: var(--accent-orange); }
+
+.solution-card h3 { font-size: 1.3rem; font-weight: 600; }
+.solution-card p { font-size: 0.9rem; font-weight: 300; color: var(--text-secondary); line-height: 1.65; }
+
+.solution-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.solution-tags span {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.solution-eval-title {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.solution-eval-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.solution-eval-list li {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.solution-eval-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-mid);
+}
+
+.solution-result {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent);
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.solutions-footer {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 700px;
+}
+
+/* ── TARGETS ── */
+.target-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.target-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.4s;
+}
+
+.target-card:hover { border-color: var(--border-hover); transform: translateY(-3px); }
+
+.target-card .metric {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.target-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+.target-card p { font-size: 0.85rem; font-weight: 300; color: var(--text-secondary); line-height: 1.6; }
+
+/* ── FOUNDER ── */
+.founder-section {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+
+.founder-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  max-width: 800px;
+}
+
+.founder-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.founder-photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.founder-photo-placeholder .initials {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.founder-photo-placeholder .label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.founder-text h3 { font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 0.3rem; }
+
+.founder-text .role {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.founder-text p {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.founder-text p strong { color: var(--text-primary); font-weight: 500; }
+
+.founder-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  transition: gap 0.3s;
+}
+
+.founder-cta:hover { gap: 0.75rem; }
+
+/* ── BLOG ── */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.blog-grid .full-row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.blog-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.4s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.blog-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+}
+
+.blog-card .tag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.blog-card h3 { font-size: 1.05rem; font-weight: 600; line-height: 1.4; }
+.blog-card p { font-size: 0.85rem; font-weight: 300; color: var(--text-secondary); line-height: 1.6; margin-top: 0.25rem; }
+
+.blog-card .priority {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+/* ── CTA / FORM ── */
+.cta-section {
+  text-align: center;
+  padding: 8rem 3rem;
+  position: relative;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--accent-dim) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-section .section-title { max-width: 700px; margin: 0 auto 1rem; }
+.cta-section .section-subtitle { max-width: 480px; margin: 0 auto 1.5rem; }
+
+.cta-phone-big {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: var(--accent);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  transition: opacity 0.3s;
+}
+
+.cta-phone-big:hover { opacity: 0.8; }
+
+.cta-phone-big svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.cta-or {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.qual-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-field.full { grid-column: 1 / -1; }
+
+.form-field label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+.form-field input,
+.form-field select {
+  padding: 0.75rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-hover);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.3s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-field select {
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238a8994' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.form-field select option {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
+.form-field input::placeholder { color: var(--text-muted); }
+.form-field input:focus,
+.form-field select:focus { border-color: var(--accent-mid); }
+
+.qual-form .btn-primary {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.5rem;
+  padding: 1rem;
+}
+
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 2rem;
+}
+
+.form-success .check {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-success h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-success p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* ── FOOTER ── */
+footer {
+  position: relative;
+  z-index: 1;
+  padding: 3rem;
+  border-top: 1px solid var(--border);
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 4rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.footer-brand p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  max-width: 300px;
+  line-height: 1.6;
+}
+
+.footer-col h5 {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.footer-col a {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin-bottom: 0.6rem;
+  transition: color 0.3s;
+}
+
+.footer-col a:hover { color: var(--text-primary); }
+
+.footer-col .phone-link {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom .copyright { font-size: 0.72rem; color: var(--text-muted); }
+
+.footer-bottom .certified {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-bottom .certified::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.5;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  nav { padding: 0.8rem 1.5rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .floating-cta { display: block; }
+  .hero { padding: 7rem 1.5rem 3rem; }
+  .hero-signal-canvas { width: 40%; opacity: 0.4; }
+  section { padding: 4rem 1.5rem; }
+  .value-grid, .blog-grid { grid-template-columns: 1fr; }
+  .blog-grid .full-row { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .process-steps::before { display: none; }
+  .solutions-grid { grid-template-columns: 1fr; }
+  .solution-card.featured { grid-template-columns: 1fr; }
+  .target-grid { grid-template-columns: 1fr; }
+  .trust-bar { flex-wrap: wrap; gap: 1.5rem; padding: 2rem 1.5rem; }
+  .founder-grid { grid-template-columns: 1fr; gap: 2rem; justify-items: center; text-align: center; }
+  .form-row { grid-template-columns: 1fr; }
+  .cta-section { padding-bottom: 10rem; }
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+}
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2.5rem; }
+  .hero-quote { font-size: 1.2rem; }
+  .trust-bar .avant-stat { border-right: none; padding-right: 0; border-bottom: 1px solid var(--border); padding-bottom: 1rem; width: 100%; }
+  .process-steps { grid-template-columns: 1fr; }
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-left">
+    <a href="#" class="logo">
+      <div class="logo-mark">TB</div>
+      <div class="logo-text">tech<span>broker</span></div>
+    </a>
+    <a href="tel:+15149454465" class="nav-phone">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      514-945-4465
+    </a>
+  </div>
+  <div class="nav-links">
+    <a href="#approach">Approche</a>
+    <a href="#solutions">Solutions</a>
+    <a href="#process">Comment ça marche</a>
+    <a href="#fondateur">À propos</a>
+    <a href="#blog">Blogue</a>
+    <a href="#contact" class="nav-cta">Consultation gratuite</a>
+  </div>
+  <button class="hamburger" onclick="this.classList.toggle('open'); document.querySelector('.mobile-menu').classList.toggle('open');" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu">
+  <a href="#approach" onclick="closeMobileMenu()">Approche</a>
+  <a href="#solutions" onclick="closeMobileMenu()">Solutions</a>
+  <a href="#process" onclick="closeMobileMenu()">Comment ça marche</a>
+  <a href="#fondateur" onclick="closeMobileMenu()">À propos</a>
+  <a href="#blog" onclick="closeMobileMenu()">Blogue</a>
+  <a href="tel:+15149454465" class="mobile-phone" onclick="closeMobileMenu()">514-945-4465</a>
+  <a href="#contact" class="mobile-cta" onclick="closeMobileMenu()">Consultation gratuite</a>
+</div>
+
+<!-- ── FLOATING MOBILE CTA ── -->
+<a href="#contact" class="floating-cta">Consultation gratuite — 514-945-4465</a>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-signal-canvas" aria-hidden="true">
+    <div class="signal-line" style="top:18%; left:5%; width:70%; animation-delay:0s;"></div>
+    <div class="signal-line" style="top:28%; left:15%; width:55%; animation-delay:0.8s;"></div>
+    <div class="signal-line" style="top:38%; left:8%; width:65%; animation-delay:1.6s;"></div>
+    <div class="signal-line" style="top:48%; left:20%; width:50%; animation-delay:2.4s;"></div>
+    <div class="signal-line" style="top:58%; left:3%; width:75%; animation-delay:0.4s;"></div>
+    <div class="signal-line" style="top:68%; left:12%; width:60%; animation-delay:1.2s;"></div>
+    <div class="signal-line" style="top:78%; left:18%; width:45%; animation-delay:2s;"></div>
+    <div class="signal-line" style="top:88%; left:7%; width:58%; animation-delay:2.8s;"></div>
+    <div class="signal-line" style="top:23%; left:25%; width:40%; animation-delay:3.2s;"></div>
+    <div class="signal-line" style="top:53%; left:10%; width:68%; animation-delay:1s;"></div>
+    <div class="signal-line" style="top:43%; left:30%; width:35%; animation-delay:3.6s;"></div>
+    <div class="signal-line" style="top:73%; left:22%; width:48%; animation-delay:0.6s;"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span>Courtier en technologies d'affaires</span>
+      <span class="status-dot"></span>
+      <span>Province du Québec</span>
+    </div>
+
+    <h1>
+      <span class="line">Le bon outil.</span>
+      <span class="line">Le bon prix.</span>
+      <span class="line">Zéro <em>bullshit.</em></span>
+    </h1>
+
+    <p class="hero-tagline">
+      On aide les <strong>PME québécoises</strong> à naviguer le marché des technologies d'affaires.
+      Agnostique, indépendant et <strong>gratuit pour vous</strong>.
+    </p>
+
+    <p class="hero-quote">« On ne vend rien. On trouve ce qui marche. »</p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">
+        Parler à Guillaume
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#process" class="btn-secondary">Comment ça marche</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar">
+  <div class="avant-stat">
+    <span class="number">90+</span>
+    <span class="desc">Fournisseurs technologiques accessibles via AVANT Communications</span>
+  </div>
+  <div class="trust-logos">
+    <span class="incluant">Incluant :</span>
+    <span class="vendor">CallTower</span>
+    <span class="vendor">GoTo</span>
+    <span class="vendor">Dialpad</span>
+    <span class="vendor">RingCentral</span>
+    <span class="vendor">Five9</span>
+    <span class="vendor">Genesys</span>
+  </div>
+</div>
+
+<!-- ── VALUE PROPS ── -->
+<section id="approach">
+  <div class="section-label">Pourquoi un courtier</div>
+  <h2 class="section-title reveal">Votre département tech<br>en accès direct.</h2>
+  <p class="section-subtitle reveal">Même expertise que les grandes boîtes, sans la facture de consultant. On est rémunéré par les fournisseurs — jamais par vous.</p>
+
+  <div class="value-grid">
+    <div class="value-card reveal">
+      <div class="icon">⚖️</div>
+      <h3>100% agnostique</h3>
+      <p>Aucune exclusivité fournisseur. On compare objectivement toutes les options du marché pour trouver celle qui fit réellement votre réalité.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="icon">🤖</div>
+      <h3>Expertise IA native</h3>
+      <p>On intègre l'intelligence artificielle dans chaque recommandation. Pas du buzzword — des gains concrets en productivité et service client.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="icon">💰</div>
+      <h3>Zéro frais pour vous</h3>
+      <p>Notre modèle est simple : les fournisseurs nous rémunèrent. Vous obtenez du conseil expert, de la négociation et du support — gratuitement.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section class="process-section" id="process">
+  <div class="section-label">Comment ça marche</div>
+  <h2 class="section-title reveal">Quatre étapes. Zéro jargon.</h2>
+  <p class="section-subtitle reveal">Du diagnostic à la mise en service, on gère tout le processus pour que vous puissiez rester concentré sur votre business.</p>
+
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="step-number">01</div>
+      <h4>Diagnostic</h4>
+      <p>Audit complet de votre infrastructure actuelle, besoins réels et pain points. 30 minutes, sans engagement.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-number">02</div>
+      <h4>Recommandation</h4>
+      <p>Comparatif objectif des solutions du marché, adapté à votre taille, budget et cas d'usage spécifiques.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-number">03</div>
+      <h4>Négociation</h4>
+      <p>On négocie les meilleurs prix et conditions en votre nom. Nos volumes donnent accès à du pricing que vous n'auriez pas seul.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-number">04</div>
+      <h4>Déploiement + Support</h4>
+      <p>Accompagnement complet jusqu'à la mise en service. Et on reste là après — votre point de contact unique.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOLUTIONS (problem-oriented) ── -->
+<section id="solutions">
+  <div class="section-label">Solutions</div>
+  <h2 class="section-title reveal">On résout des problèmes,<br>pas des fiches produit.</h2>
+  <p class="section-subtitle reveal">Peu importe le fournisseur, ce qui compte c'est que votre équipe communique mieux, pour moins cher, avec moins de maux de tête.</p>
+
+  <div class="solutions-grid">
+    <!-- Featured: UCaaS -->
+    <div class="solution-card featured reveal">
+      <div>
+        <span class="solution-badge badge-popular">Le plus demandé</span>
+        <h3>Téléphonie d'affaires cloud (UCaaS)</h3>
+        <p>Votre système téléphonique actuel vous coûte trop cher, tombe en panne, ou ne supporte pas le télétravail? On migre votre équipe vers une solution cloud moderne — appels, vidéo, chat, tout dans une seule app, accessible de partout.</p>
+        <div class="solution-tags">
+          <span>PME 5-200 employés</span>
+          <span>Migration PBX</span>
+          <span>Travail hybride</span>
+          <span>Multi-sites</span>
+        </div>
+      </div>
+      <div style="padding-left:2rem;border-left:1px solid var(--border);">
+        <div class="solution-eval-title">Ce qu'on évalue pour vous</div>
+        <ul class="solution-eval-list">
+          <li>Votre facture actuelle vs ce que le marché offre en 2026</li>
+          <li>La compatibilité avec vos outils existants (Microsoft 365, Google, etc.)</li>
+          <li>La qualité du support et de la transition</li>
+          <li>Les fonctionnalités IA qui font une vraie différence</li>
+        </ul>
+        <div class="solution-result">Résultat typique : 20-40% d'économies + une équipe qui peut travailler de n'importe où.</div>
+      </div>
+    </div>
+
+    <!-- CCaaS -->
+    <div class="solution-card reveal">
+      <span class="solution-badge badge-service">Service client</span>
+      <h3>Centre de contact intelligent (CCaaS)</h3>
+      <p>Votre équipe est débordée d'appels? Vos clients attendent trop longtemps? On structure votre service client avec du routing intelligent, de l'omnicanal (téléphone + chat + email) et de l'IA qui assiste vos agents en temps réel.</p>
+      <div class="solution-tags">
+        <span>10+ agents</span>
+        <span>Omnicanal</span>
+        <span>IA conversationnelle</span>
+        <span>Analytics</span>
+      </div>
+    </div>
+
+    <!-- Audit -->
+    <div class="solution-card reveal">
+      <span class="solution-badge badge-optim">Optimisation</span>
+      <h3>Audit &amp; renégociation télécom</h3>
+      <p>Pas sûr si vous payez le bon prix? On analyse votre contrat actuel, identifie les lignes inutilisées et les fonctionnalités surpayées, et on négocie un meilleur deal — même si vous restez avec le même fournisseur.</p>
+      <div class="solution-tags">
+        <span>Analyse de facture</span>
+        <span>Fin de contrat</span>
+        <span>Renégociation</span>
+        <span>Gratuit</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="solutions-footer reveal">
+    Accès à 90+ fournisseurs incluant CallTower, GoTo, Dialpad, RingCentral, Five9, Genesys et plus via AVANT Communications — le plus grand distributeur de technologies en Amérique du Nord.
+  </div>
+</section>
+
+<!-- ── TARGETS ── -->
+<section>
+  <div class="section-label">Pour qui</div>
+  <h2 class="section-title reveal">Bâti pour les PME<br>en mouvement.</h2>
+  <p class="section-subtitle reveal">Nos clients types partagent un point commun : ils savent que leur infra actuelle ne scale plus.</p>
+
+  <div class="target-grid">
+    <div class="target-card reveal">
+      <div class="metric">20–200</div>
+      <h4>Employés</h4>
+      <p>La taille idéale où un courtier fait une vraie différence. Assez gros pour avoir des besoins complexes, assez petit pour vouloir du concret.</p>
+    </div>
+    <div class="target-card reveal">
+      <div class="metric">PBX→Cloud</div>
+      <h4>En transition</h4>
+      <p>Votre système on-premise arrive en fin de vie? C'est le moment de passer au cloud — et de bien le faire du premier coup.</p>
+    </div>
+    <div class="target-card reveal">
+      <div class="metric">Hybride</div>
+      <h4>Travail flexible</h4>
+      <p>Bureau, maison, route. Vos communications doivent suivre votre équipe partout, sans friction et sans compromis sur la qualité.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOUNDER ── -->
+<section class="founder-section" id="fondateur">
+  <div class="section-label">Le fondateur</div>
+  <h2 class="section-title reveal">Derrière Techbroker,<br>il y a un gars.</h2>
+
+  <div class="founder-grid reveal">
+    <div class="founder-photo">
+      <img src="/images/guillaume-profil.png" alt="Guillaume, fondateur de Techbroker" style="width:100%;height:100%;object-fit:cover;border-radius:16px;">
+    </div>
+    <div class="founder-text">
+      <h3>Guillaume</h3>
+      <div class="role">Fondateur · Courtier certifié AVANT</div>
+      <p>J'ai passé des années comme <strong>représentant commercial chez les deux plus gros joueurs en télécommunications au Québec</strong>. J'étais bon dans ce que je faisais — mais je savais que mon opinion pivotait toujours en fonction d'une seule entreprise. Pas du client.</p>
+      <p>C'est ce qui m'a poussé à fonder Techbroker. Aujourd'hui, <strong>je n'ai aucun parti pris</strong>. Mon rôle est de guider les PME québécoises vers le meilleur choix — pas le choix qui fait ma commission. C'est la différence entre un vendeur et un courtier.</p>
+      <a href="#contact" class="founder-cta">
+        On jase?
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── BLOG ── -->
+<section id="blog">
+  <div class="section-label">Blogue</div>
+  <h2 class="section-title reveal">Ressources et insights.</h2>
+  <p class="section-subtitle reveal">Des articles concrets pour aider les PME à prendre de meilleures décisions technologiques. Pas de fluff.</p>
+
+  <div class="blog-grid">
+    <div class="blog-card reveal">
+      <span class="tag">Guide</span>
+      <h3>PBX vs Cloud en 2026 : Le guide honnête pour PME</h3>
+      <p>Tout ce que votre fournisseur actuel ne vous dit pas sur la migration vers le cloud. Coûts réels, pièges et timeline.</p>
+      <span class="priority">Priorité #1</span>
+    </div>
+    <div class="blog-card reveal">
+      <span class="tag">Comparatif</span>
+      <h3>Teams Phone vs Zoom Phone vs GoTo : Le vrai comparatif</h3>
+      <p>Un comparatif objectif par quelqu'un qui n'a rien à vous vendre. Forces, faiblesses, et pour qui chaque solution fait du sens.</p>
+      <span class="priority">Priorité #2</span>
+    </div>
+    <div class="blog-card reveal">
+      <span class="tag">IA</span>
+      <h3>Comment l'IA change la téléphonie d'affaires (concrètement)</h3>
+      <p>Transcription, coaching, analytics — pas du buzzword mais des cas d'usage réels pour des équipes de 20-200.</p>
+      <span class="priority">Priorité #3</span>
+    </div>
+    <div class="full-row">
+      <div class="blog-card reveal">
+        <span class="tag">Prix</span>
+        <h3>Combien coûte un système téléphonique d'entreprise au Québec en 2026</h3>
+        <p>La requête #1 des PME sur Google. Fourchettes de prix réelles, ce qui est inclus, et comment ne pas se faire avoir.</p>
+        <span class="priority">Priorité #4</span>
+      </div>
+      <div class="blog-card reveal">
+        <span class="tag">Migration</span>
+        <h3>Quitter Bell Business : Guide de migration sans douleur</h3>
+        <p>Pour les clients Bell frustrés. Étapes concrètes, pièges à éviter, et à quoi s'attendre côté timeline et coûts.</p>
+        <span class="priority">Priorité #5</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA / QUALIFICATION FORM ── -->
+<section class="cta-section" id="contact">
+  <div class="section-label" style="justify-content:center;">Commencer</div>
+  <h2 class="section-title reveal">Prêt à simplifier<br>vos technologies?</h2>
+  <p class="section-subtitle reveal" style="text-align:center;">Consultation gratuite de 30 minutes. Aucun engagement. Juste une conversation honnête sur ce qui ferait du sens pour votre business.</p>
+
+  <a href="tel:+15149454465" class="cta-phone-big reveal">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    514-945-4465
+  </a>
+
+  <div class="cta-or reveal">ou laissez-nous vos coordonnées</div>
+
+  <div class="qual-form reveal" id="qualForm">
+    <div class="form-row">
+      <div class="form-field">
+        <label for="fname">Nom complet</label>
+        <input type="text" id="fname" placeholder="Jean Tremblay" required>
+      </div>
+      <div class="form-field">
+        <label for="femail">Courriel professionnel</label>
+        <input type="email" id="femail" placeholder="jean@entreprise.ca" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label for="fcompany">Nom de l'entreprise</label>
+        <input type="text" id="fcompany" placeholder="Votre entreprise inc.">
+      </div>
+      <div class="form-field">
+        <label for="fsize">Nombre d'employés</label>
+        <select id="fsize">
+          <option value="" disabled selected>Sélectionner</option>
+          <option value="1-10">1-10</option>
+          <option value="11-30">11-30</option>
+          <option value="31-50">31-50</option>
+          <option value="51-100">51-100</option>
+          <option value="100+">100+</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-field full">
+      <label for="fmotiv">Qu'est-ce qui vous motive à explorer?</label>
+      <select id="fmotiv">
+        <option value="" disabled selected>Sélectionner</option>
+        <option value="facture">Facture trop élevée</option>
+        <option value="desuet">Système désuet / problèmes fréquents</option>
+        <option value="hybride">Passage au télétravail / hybride</option>
+        <option value="croissance">Croissance / nouveau bureau</option>
+        <option value="contrat">Contrat qui arrive à échéance</option>
+        <option value="curieux">Juste curieux</option>
+      </select>
+    </div>
+    <button class="btn-primary" onclick="submitForm()">
+      Planifier ma consultation gratuite
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  <div class="form-success reveal" id="formSuccess">
+    <div class="check">✓</div>
+    <h3>Merci!</h3>
+    <p>On vous revient dans les 24 heures pour planifier votre consultation gratuite.</p>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="logo">
+        <div class="logo-mark">TB</div>
+        <div class="logo-text">tech<span>broker</span></div>
+      </a>
+      <p>Courtier indépendant en technologies d'affaires pour PME québécoises. Accès à 90+ fournisseurs technologiques.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Navigation</h5>
+      <a href="#approach">Approche</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#process">Comment ça marche</a>
+      <a href="#fondateur">À propos</a>
+      <a href="#blog">Blogue</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <a href="tel:+15149454465" class="phone-link">514-945-4465</a>
+      <a href="mailto:guillaume@techbroker.ca">guillaume@techbroker.ca</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="copyright">© 2026 Techbroker. Montréal, Québec.</span>
+    <span class="certified">Partenaire certifié AVANT · Accès à 90+ fournisseurs technologiques</span>
+  </div>
+</footer>
+
+<script>
+function closeMobileMenu() {
+  document.querySelector('.hamburger').classList.remove('open');
+  document.querySelector('.mobile-menu').classList.remove('open');
+}
+
+function submitForm() {
+  const name = document.getElementById('fname').value;
+  const email = document.getElementById('femail').value;
+  if (!name || !email) {
+    document.getElementById('fname').style.borderColor = name ? 'var(--border-hover)' : '#ff4444';
+    document.getElementById('femail').style.borderColor = email ? 'var(--border-hover)' : '#ff4444';
+    return;
+  }
+  // TODO: Connect to HubSpot, Formspree, or Cal.com
+  document.getElementById('qualForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

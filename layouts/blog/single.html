@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ .Title }} — Techbroker</title>
+<meta name="description" content="{{ .Description }}">
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content="{{ .Description }}">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg-primary: #0a0b0f;
+  --bg-secondary: #111318;
+  --bg-card: #161820;
+  --bg-card-hover: #1c1e28;
+  --text-primary: #e8e6e1;
+  --text-secondary: #8a8994;
+  --text-muted: #5c5b66;
+  --accent: #00e5a0;
+  --accent-dim: #00e5a020;
+  --border: #ffffff0a;
+  --border-hover: #ffffff15;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--bg-primary); color: var(--text-primary); -webkit-font-smoothing: antialiased; }
+
+.container { max-width: 720px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+.back-link {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  margin-bottom: 3rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.back-link:hover { opacity: 0.8; }
+
+.article-meta {
+  margin-bottom: 2rem;
+}
+
+.article-meta .tag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.article-meta h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.article-meta .date {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.article-content {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.article-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 3rem 0 1rem;
+}
+
+.article-content h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 2rem 0 0.75rem;
+}
+
+.article-content p { margin-bottom: 1.25rem; }
+
+.article-content strong { color: var(--text-primary); font-weight: 500; }
+
+.article-content a { color: var(--accent); text-decoration: none; }
+.article-content a:hover { text-decoration: underline; }
+
+.article-content ul, .article-content ol {
+  margin: 1rem 0 1.5rem 1.5rem;
+}
+
+.article-content li { margin-bottom: 0.5rem; }
+
+.article-content blockquote {
+  border-left: 2px solid var(--accent);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--text-primary);
+}
+
+.article-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.article-content th, .article-content td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-hover);
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+.article-content th {
+  background: var(--bg-card);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* CTA box */
+.article-cta {
+  background: var(--bg-card);
+  border: 1px solid var(--accent-dim);
+  border-radius: 12px;
+  padding: 2.5rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.article-cta h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.article-cta p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+.article-cta a.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.8rem;
+  background: var(--accent);
+  color: var(--bg-primary);
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.article-cta a.btn:hover {
+  box-shadow: 0 4px 30px var(--accent-dim);
+  transform: translateY(-2px);
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/blog/" class="back-link">← Tous les articles</a>
+
+  <div class="article-meta">
+    {{ with .Params.tag }}<span class="tag">{{ . }}</span>{{ end }}
+    <h1>{{ .Title }}</h1>
+    <span class="date">{{ .Date.Format "2 January 2006" }}</span>
+  </div>
+
+  <div class="article-content">
+    {{ .Content }}
+  </div>
+
+  <div class="article-cta">
+    <h3>Besoin d'aide pour vos technologies?</h3>
+    <p>Consultation gratuite de 30 minutes avec Guillaume. Aucun engagement.</p>
+    <a href="/#contact" class="btn">Jase avec Guillaume →</a>
+  </div>
+</div>
+</body>
+</html>

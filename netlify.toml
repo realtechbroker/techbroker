@@ -1,0 +1,12 @@
+[build]
+  publish = "public"
+  command = "hugo --minify"
+
+[build.environment]
+  HUGO_VERSION = "0.147.0"
+
+[[redirects]]
+  from = "https://www.techbroker.ca/*"
+  to = "https://techbroker.ca/:splat"
+  status = 301
+  force = true
