@@ -18,3 +18,4 @@ theme = ""
 
 [permalinks]
   blog = "/blog/:contentbasename/"
+theme = ""
